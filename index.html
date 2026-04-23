@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Produtividade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Login - Gestão de Tarefas</h2>
+    <input id="email" placeholder="Email">
+    <br>
+    <input id="senha" type="password" placeholder="Senha">
+    <button onclick="logar()">Entrar</button>
+
+    <div id="painel" style="display:none">
+        <hr>
+        <h3>Minhas Tarefas (CRUD)</h3>
+        <input id="tarefaInput" placeholder="O que precisa fazer?">
+        <button onclick="criar()">Registrar Tarefa</button>
+        <ul id="lista"></ul>
+    </div>
+
+    <script>
+const API = 'http://localhost:3000/tarefas';
+
+async function logar() {
+    const emailVal = document.getElementById('email').value;
+    const senhaVal = document.getElementById('senha').value;
+    
+    const res = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: emailVal, senha: senhaVal})
+    });
+    
+    if(res.ok) { 
+        document.getElementById('login-section')?.style.setProperty('display', 'none'); // Ajuste se usar o CSS novo
+        document.getElementById('painel').style.display = 'block'; 
+        atualizarLista(); 
+    } else { 
+        alert('Dados inválidos!'); 
+    }
+}
+
+async function atualizarLista() {
+    const r = await fetch(API);
+    const tarefas = await r.json();
+    const listaUI = document.getElementById('lista');
+    
+    listaUI.innerHTML = tarefas.map(t => `
+        <li id="tarefa-${t.id}">
+            <strong>${t.titulo}</strong> <span>[${t.status}]</span>
+            <div class="buttons-group">
+                <button onclick="concluir(${t.id})">Concluir (Update)</button>
+                <button onclick="deletar(${t.id})">Excluir (Delete)</button>
+            </div>
+        </li>`).join('');
+}
+
+async function criar() {
+    const input = document.getElementById('tarefaInput');
+    if(!input.value) return;
+    
+    await fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({titulo: input.value})
+    });
+    input.value = '';
+    await atualizarLista();
+}
+
+async function concluir(id) {
+    console.log("Tentando concluir a tarefa ID:", id); // Isso ajuda a ver se o clique funciona
+    const res = await fetch('http://localhost:3000/tarefas/' + id, { 
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'} 
+    });
+    
+    if (res.ok) {
+        console.log("Sucesso ao concluir!");
+        atualizarLista(); // Recarrega a lista para mostrar o novo status
+    } else {
+        console.log("Erro ao concluir no servidor");
+    }
+}
+async function deletar(id) {
+    await fetch('http://localhost:3000/tarefas/' + id, { method: 'DELETE' });
+    atualizarLista();
+}
+
+    </script>
+</body>
+</html>
