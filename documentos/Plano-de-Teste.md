@@ -49,7 +49,7 @@ As ferramentas utilizadas foram:
 * **Navegadores(Chrome e Edge):**Para testar a interface e o funcionamento dos botões na prática.   
 *  **Jest :**Testar componentes isolados e a lógica do sistema em JavaScript/Node.js.   
 * **Postman** :Testar as rotas (endpoints) da API de forma isolada.   
-* **Selenium :**Testar a jornada do usuário de ponta a ponta (E2E) no navegador. 
+* **Cypress :**Testar a jornada do usuário de ponta a ponta (E2E) no navegador. 
 
 ## **5\. Estratégia de Testes**
 
