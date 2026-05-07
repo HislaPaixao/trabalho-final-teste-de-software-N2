@@ -1,4 +1,4 @@
-```
+ ```
 Documento de Visão – Sistema de Gestão de Tarefas
 ```
 **1. Objetivo do Produto**
@@ -117,27 +117,37 @@ _Dado que a tarefa "Ler documento" está concluída
 Quando clico em "Reabrir"
 Então a tarefa volta para pendentes_
 
-**História 3 – Editar uma Tarefa**
+**História 3 – Consultar Status das Tarefas**
 
-**Como** um usuário atento
-**Quero** editar o título ou a descrição de uma tarefa
-**Para** corrigir informações ou adicionar mais detalhes
+**Como** um usuário que precisa acompanhar o andamento
+**Quero** visualizar o status de cada tarefa na lista
+**Para** identificar rapidamente o que está pendente e o que já foi concluído
 
 **Critérios de Aceitação**
 
-- Toda tarefa deve possuir botão **Editar** ;
-- Ao clicar, os dados devem carregar em formulário ou modal;
-- Após salvar, alterações devem aparecer imediatamente;
-- Mudanças devem ser persistidas no backend.
+Toda tarefa exibe uma tag de status indicando "Pendente" ou "Concluída";
 
-**Cenário BDD**
+O status deve refletir o valor armazenado no backend;
 
-**_Cenário: Editar título da tarefa_**
-_Dado que existe a tarefa "Fazer relatório"
-Quando clico em "Editar"
-E altero o título para "Fazer relatório final"
-E salvo
-Então vejo a tarefa atualizada na lista_
+A tag deve ser atualizada automaticamente após qualquer alteração de status;
+
+A lista apresenta todas as tarefas em uma única visualização.
+
+**Cenários BDD**
+
+Cenário: Visualizar status de uma tarefa pendente
+Dado que a tarefa "Estudar lógica" está cadastrada e não foi concluída
+Quando acesso a lista de tarefas
+Então vejo a tag "Pendente" ao lado do título
+Cenário: Visualizar status de uma tarefa concluída
+Dado que a tarefa "Beber água" foi marcada como concluída
+Quando acesso a lista de tarefas
+Então vejo a tag "Concluída" ao lado do título
+Cenário: Status atualiza após conclusão
+Dado que a tarefa "Organizar mesa" está com tag "Pendente"
+Quando clico no botão "Concluir"
+Então a tag muda imediatamente para "Concluída"
+E permaneço na mesma lista de tarefas
 
 **História 4 – Excluir uma Tarefa**
 
@@ -163,29 +173,46 @@ Quando clico em "Excluir"
 Então ela é removida da lista de concluídas_
 
 
-**História 5 – Visualizar Listas Separadas**
+**História 5 – Filtrar Tarefas por Status**
 
 **Como** um usuário que quer foco
-**Quero** ver tarefas pendentes separadas das concluídas
-**Para** não me distrair com o que já foi feito
+**Quero** identificar visualmente quais tarefas estão pendentes e quais estão concluídas
+**Para** priorizar o que ainda precisa ser feito
 
 **Critérios de Aceitação**
 
-- A interface deve exibir duas seções claras: **Pendentes** e **Concluídas** ;
-- Ao criar ou editar, a tarefa deve aparecer na seção correta;
-- Tarefas concluídas podem ser reabertas.
+Cada tarefa exibe seu status por meio de uma tag visual (rótulo);
 
-**Cenário BDD**
+O status "Pendente" é exibido para tarefas não concluídas;
 
-**_Cenário: Carregar página com listas distintas_**
-_Dado que existem duas tarefas:_
+O status "Concluída" é exibido para tarefas finalizadas;
+
+Todas as tarefas aparecem em uma lista única , sem separação física entre seções;
+
+A tag de status permite distinguir os dois estados sem necessidade de navegar entre abas ou páginas.
+
+**Cenários BDD**
+
+Cenário: Identificar tarefas pendentes e concluídas na mesma lista
+Dado que existem três tarefas:
 
 _- "Estudar" (pendente)
-- "Comprar pão" (concluída)_
 
-_Quando acesso a página principal_
+"Comprar pão" (concluída)
 
-_Então vejo "Estudar" em Pendentes
-E vejo "Comprar pão" em Concluídas_
+"Ligar para cliente" (pendente)_
+
+_Quando acesso a página principal
+
+Então vejo as três tarefas em uma única lista
+E "Estudar" exibe a tag "Pendente"
+E "Comprar pão" exibe a tag "Concluída"
+E "Ligar para cliente" exibe a tag "Pendente"_
+Cenário: Diferenciar status sem separação de seções
+Dado que existem tarefas com diferentes status
+Quando olho para a lista
+Então consigo distinguir o que está concluído e o que está pendente
+E não há divisão da lista em seções separadas
+
 
 
