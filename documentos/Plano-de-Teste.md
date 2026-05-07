@@ -46,9 +46,9 @@ As ferramentas utilizadas foram:
 * **VS code(IDE):** onde escrevemos o código e utilizamos o terminal para rodar o projeto e monitorar possíveis erros  
 * **Node.js e Express:** onde vamos testar se as rotas de tarefas estão respondendo como por ex: salvar e deletar  
 * **SQLite:** Onde vamos validar se os dados das tarefas estão sendo gravados de verdade no banco.    
-* **Navegadores**(Chrome e Edge):**Para testar a interface e o funcionamento dos botões na prática.   
+* **Navegadores**(Chrome e Edge):** Para testar a interface e o funcionamento dos botões na prática.   
 *  **Jest :** Testar componentes isolados e a lógica do sistema em JavaScript/Node.js.   
-* **Postman** :Testar as rotas (endpoints) da API de forma isolada.   
+* **Postman** : Testar as rotas (endpoints) da API de forma isolada.   
 * **Cypress :** Testar a jornada do usuário de ponta a ponta (E2E) no navegador. 
 
 ## **5\. Estratégia de Testes**
@@ -59,7 +59,7 @@ Abaixo estão listado como os testes vão ser realizados
 
 * **Testes de unitários:** testar cada componente do sistema de forma individual e isolada, garantindo se o sistema corresponde aos requisitos.  
 * **Testes de API (testes de endpoints) :** Testar as rotas criadas com Express. O foco é garantir que ao pedir a requisição, o servidor responda com o status  correto e os dados sejam processados.  
-* **Testes E2E(ponta a ponta):**testes que simulam a interação do usuário com o sistema.
+* **Testes E2E(ponta a ponta):** testes que simulam a interação do usuário com o sistema.
 
 ### **5.2. Critérios de Aceitação**
 
