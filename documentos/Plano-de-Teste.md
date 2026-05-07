@@ -45,11 +45,11 @@ As ferramentas utilizadas foram:
 * **Github:** controle de versão e armazenamento de código.    
 * **VS code(IDE):** onde escrevemos o código e utilizamos o terminal para rodar o projeto e monitorar possíveis erros  
 * **Node.js e Express:** onde vamos testar se as rotas de tarefas estão respondendo como por ex: salvar e deletar  
-* **SQLite:**Onde vamos validar se os dados das tarefas estão sendo gravados de verdade no banco.    
-* **Navegadores(Chrome e Edge):**Para testar a interface e o funcionamento dos botões na prática.   
-*  **Jest :**Testar componentes isolados e a lógica do sistema em JavaScript/Node.js.   
+* **SQLite:** Onde vamos validar se os dados das tarefas estão sendo gravados de verdade no banco.    
+* **Navegadores**(Chrome e Edge):**Para testar a interface e o funcionamento dos botões na prática.   
+*  **Jest :** Testar componentes isolados e a lógica do sistema em JavaScript/Node.js.   
 * **Postman** :Testar as rotas (endpoints) da API de forma isolada.   
-* **Cypress :**Testar a jornada do usuário de ponta a ponta (E2E) no navegador. 
+* **Cypress :** Testar a jornada do usuário de ponta a ponta (E2E) no navegador. 
 
 ## **5\. Estratégia de Testes**
 
