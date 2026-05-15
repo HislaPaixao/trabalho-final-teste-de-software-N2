@@ -16,5 +16,8 @@ Este projeto foi desenvolvido para a disciplina de Teste de Software.
 ## Demonstração do sistema em execução:
 https://drive.google.com/file/d/10v9x1kf-xJwvpwo46neoSbPLyUa7IAlX/view?usp=drive_link
 
+## Link da apresentação:
+https://www.canva.com/design/DAHJl4Piufo/evOREvt9jYEn_ZlrFQiR3A/edit?ui=eyJBIjp7fX0
+
 ## Integrantes do Grupo
 * Gabriel Oliveira, Hisla Paixão, Luana Estéfany, Lucas Pereira, Murilo Oliveira.
